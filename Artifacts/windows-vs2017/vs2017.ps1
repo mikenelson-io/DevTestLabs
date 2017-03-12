@@ -36,4 +36,16 @@ catch
     Write-Error 'Failed to install VS2017'
 }
 
+try
+{
+
+    & "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\StorePID.exe" NJVYC-BMHX2-G77MM-4XJMR-6Q8QF 8860 | Out-Null
+
+}
+catch
+{
+    Write-Error 'Failed to activate VS2017'
+}
+
+
 
