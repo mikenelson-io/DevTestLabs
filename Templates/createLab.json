@@ -42,7 +42,7 @@
                 "folderPath": "/Artifacts",
                 "branchRef": "master",
                 "status": "Enabled",
-                "securityToken": "02be0065157f3cffd7344e2ecd95e85850e2ed20"
+                "securityToken": "b587bcf1c30969f4baf6e155cb02a7e169c61d11"
             },
             "dependsOn": [
                 "[resourceId('microsoft.devtestlab/labs', parameters('newLabName'))]"
@@ -50,8 +50,8 @@
         },
             {
             "type": "microsoft.devtestlab/labs/schedules",
-            "name": "[concat(parameters('newLabName'),'/labvmshutdown')]",
-            "apiVersion": "2016-05-15"
+            "name": "[concat(parameters('newLabName'),'/LabVmsShutdown')]",
+            "apiVersion": "2016-05-15",
             "properties": {
                 "status": "Enabled",
                 "taskType": "LabVmsShutdownTask",

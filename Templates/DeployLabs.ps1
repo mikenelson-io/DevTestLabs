@@ -53,10 +53,10 @@ $createVMTemplate="https://raw.githubusercontent.com/Azure/azure-devtestlab/mast
 $createFormulaTemplate="https://raw.githubusercontent.com/Azure/azure-devtestlab/master/ARMTemplates/201-dtl-create-formula/azuredeploy.json"
 $createImageFromVHD= "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/ARMTemplates/201-dtl-create-customimage-from-vhd/azuredeploy.json"  
 
-$createLab= "C:\code\EricCote.github.io\AzureVm\createLab.json"
-$createFormula="C:\code\EricCote.github.io\AzureVm\FormulaTemplate.json"
-$deployVm="C:\code\EricCote.github.io\AzureVm\deployvm.json"
-$deployCustomVm="C:\code\EricCote.github.io\AzureVm\deployCustomVm.json"
+$createLab=          "C:\code\DevTestLabs\templates\createLab.json"
+$createFormula=      "C:\code\DevTestLabs\templates\FormulaTemplate.json"
+$deployVm=           "C:\code\DevTestLabs\templates\deployvm.json"
+$deployCustomVm=     "C:\code\DevTestLabs\templates\deployCustomVm.json"
 
 
 $groupName="CoursWebApi"
@@ -71,16 +71,16 @@ New-AzureRmResourceGroup -Name $groupName -Location $location
 
 
 #On installe un lab vierge
-New-AzureRmResourceGroupDeployment -name "CoursWebApi12345" `
-                                   -ResourceGroupName $groupName `
-                                   -TemplateFile $CreateLabTemplate `
-                                   -newLabName $labName
+#New-AzureRmResourceGroupDeployment -name "CoursWebApi12345" `
+#                                   -ResourceGroupName $groupName `
+#                                   -TemplateFile $CreateLabTemplate `
+#                                   -newLabName $labName
 
 
 
 
 
-#On modifie les données du lab
+#On créé un Lab
 New-AzureRmResourceGroupDeployment -name "CoursWebApi99" `                                   -ResourceGroupName $groupName `
                                    -TemplateFile $createLab `
                                    -newLabName $LabName
@@ -103,15 +103,15 @@ New-AzureRmResourceGroupDeployment -name "CoursWebApi99" `                     
 
 
 #on saute
-New-AzureRmResourceGroupDeployment -name "CoursWebApi99" `                                   -ResourceGroupName $groupName `
+New-AzureRmResourceGroupDeployment -name "CoursWebApi97" `                                   -ResourceGroupName $groupName `
                                    -TemplateUri $createVMTemplate `
+                                   -existingLabName $labName `
                                    -newVMName "coursWeb01" `
-                                   -existingLabName "CoursApi" `
                                    -offer "Windows" `
                                    -publisher "MicrosoftVisualStudio" `
                                    -sku "Windows-10-N-x64" `
                                    -osType "Windows" `
-                                   -version "50.2.2" `
+                                   -version "latest" `
                                    -newVMSize "Standard_DS2_V2" `
                                    -userName $vmUsername `
                                    -password $SecurePassword
