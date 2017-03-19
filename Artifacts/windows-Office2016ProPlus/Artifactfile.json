@@ -1,0 +1,14 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+  "title": "Office 2016 ProPlus",
+  "description": "Installs Office 2016 Professionnal Plus Click-to-Run. Has a seven days grace period",
+  "tags": [
+    "Windows",
+    "Office"
+  ],
+  "iconUri": "http://www.softwarecrew.com/wp-content/uploads/2015/03/office-200x175.png",
+  "targetOsType": "Windows",
+  "runCommand": {
+    "commandToExecute": "powershell.exe -ExecutionPolicy bypass -File Office2016.ps1"
+  }
+}
